@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Achmad IP | Expert Programmer & Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0c10;
+      color: #eef2ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1e26;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Glassmorphic header / nav */
+    .navbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 12, 16, 0.8);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: #eef2ff;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #cbd5e6;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+
+    /* Buttons & badges */
+    .btn-primary {
+      background: linear-gradient(95deg, #2563eb, #3b82f6);
+      border: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      font-family: inherit;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(95deg, #3b82f6, #2563eb);
+      box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #3b82f6;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #eef2ff;
+      transition: 0.2s;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-outline:hover {
+      background: rgba(59,130,246,0.1);
+      border-color: #60a5fa;
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 5rem 0 4rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: rgba(59,130,246,0.2);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #93c5fd;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(4px);
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-highlight {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #9ca3af;
+      max-width: 550px;
+      margin: 1.2rem 0 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .stat-item h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+    .stat-item p {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    .hero-avatar {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+    }
+    .avatar-card {
+      background: linear-gradient(145deg, #11161f, #0a0d12);
+      padding: 1rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(59,130,246,0.3);
+      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5);
+    }
+    .avatar-card img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 1.5rem;
+      background: #1f2937;
+      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.4);
+    }
+
+    /* Section style */
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #a78bfa);
+      border-radius: 3px;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .skill-tag {
+      background: #11161f;
+      padding: 0.6rem 1.3rem;
+      border-radius: 40px;
+      font-weight: 500;
+      border: 1px solid #2d3748;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .skill-tag i {
+      margin-right: 8px;
+      color: #3b82f6;
+    }
+    .skill-tag:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    /* portfolio cards */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .portfolio-card {
+      background: #11161f;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid #1e2a3a;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4);
+    }
+    .card-img {
+      background: #0f172a;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #3b82f6;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .card-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-content p {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .tech-stack span {
+      background: #1e293b;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .card-link {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card-link i {
+      transition: 0.2s;
+    }
+    .card-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Experience / timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+      border-left: 2px solid #3b82f6;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+    .timeline-year {
+      font-weight: 800;
+      font-size: 1.2rem;
+      min-width: 100px;
+      color: #60a5fa;
+    }
+    .timeline-desc h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-desc p {
+      color: #b9c3d4;
+    }
+
+    /* Contact & footer */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      background: #0d1117;
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid #1e293b;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info i {
+      width: 32px;
+      color: #3b82f6;
+      margin-right: 12px;
+    }
+    .contact-info p {
+      margin: 1rem 0;
+    }
+    .social-icons a {
+      color: #cbd5e1;
+      font-size: 1.6rem;
+      margin-right: 1.2rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: #3b82f6;
+    }
+    footer {
+      border-top: 1px solid #1e2a3a;
+      padding: 2rem 0;
+      text-align: center;
+      color: #7e8b9c;
+    }
+
+    @media (max-width: 780px) {
+      .nav-flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 20%;
+      }
+      .container {
+        padding: 0 1.5rem;
+      }
+      .timeline-item {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-flex">
+      <div class="logo">Achmad<span>IP</span>.<span style="color:#3b82f6">dev</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#portfolio">Portofolio</a></li>
+        <li><a href="#experience">Perjalanan</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+      <button class="btn-outline" id="resumeBtn">Resume <i class="fas fa-download"></i></button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero / Home section -->
+    <section id="home">
+      <div class="container hero">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-code"></i> Expert Programmer & Arsitek Solusi
+          </div>
+          <h1>Achmad IP<br><span class="hero-highlight">Membangun Ekosistem Digital</span> Berkinerja Tinggi</h1>
+          <p>Spesialis Backend & Cloud Engineering dengan 8+ tahun pengalaman. Saya menciptakan sistem scalable, aman, dan elegant untuk startup hingga enterprise.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn-primary" id="exploreWork">Jelajahi Portofolio <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-outline" id="contactScroll">Hubungi Saya</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><h3>35+</h3><p>PROYEK SELESAI</p></div>
+            <div class="stat-item"><h3>12+</h3><p>TEKNOLOGI</p></div>
+            <div class="stat-item"><h3>100%</h3><p>KEPUASAN KLIEN</p></div>
+          </div>
+        </div>
+        <div class="hero-avatar">
+          <div class="avatar-card">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Achmad IP - Programmer Expert">
+            <!-- placeholder gambar, bisa diganti dengan foto asli programmer -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: #0b0f14;">
+      <div class="container">
+        <h2 class="section-title">⚡ Keahlian Expert</h2>
+        <div class="skills-grid">
+          <div class="skill-tag"><i class="fab fa-python"></i> Python</div>
+          <div class="skill-tag"><i class="fab fa-js"></i> JavaScript/TypeScript</div>
+          <div class="skill-tag"><i class="fab fa-java"></i> Java (Spring)</div>
+          <div class="skill-tag"><i class="fas fa-database"></i> PostgreSQL / MongoDB</div>
+          <div class="skill-tag"><i class="fab fa-react"></i> React & Next.js</div>
+          <div class="skill-tag"><i class="fab fa-node"></i> Node.js (NestJS)</div>
+          <div class="skill-tag"><i class="fas fa-cloud"></i> AWS/GCP</div>
+          <div class="skill-tag"><i class="fas fa-code-branch"></i> Docker/K8s</div>
+          <div class="skill-tag"><i class="fas fa-robot"></i> AI/LLM Integration</div>
+          <div class="skill-tag"><i class="fas fa-shield-alt"></i> Security Best Practices</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section (Expert level projects) -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title">📌 Portofolio Unggulan</h2>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- akan diisi dynamic via js, namun fallback static -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Roadmap -->
+    <section id="experience" style="background: #0b0f14;">
+      <div class="container">
+        <h2 class="section-title">🚀 Perjalanan Karir</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2022 - Sekarang</div>
+            <div class="timeline-desc"><h4>Lead Software Engineer · NexaTech</h4><p>Arsitek microservices handling 2M+ request/hari, memimpin tim 6 engineer, migrasi legacy ke cloud-native (AWS EKS).</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2019 - 2022</div>
+            <div class="timeline-desc"><h4>Senior Backend Developer · FinScale</h4><p>Membangun sistem payment gateway dengan latency sub-100ms, integrasi 15+ bank dan fintech, meningkatkan transaksi aman hingga 300%.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2016 - 2019</div>
+            <div class="timeline-desc"><h4>Fullstack Programmer · DigitalInovasi</h4><p>Mengembangkan platform e-commerce dengan realtime inventory dan recommendation engine berbasis ML.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">📬 Kolaborasi & Diskusi</h2>
+        <div class="contact-flex">
+          <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> achmad.ip@programmer.expert</p>
+            <p><i class="fas fa-phone-alt"></i> +62 812 3456 7890</p>
+            <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia (Remote / Worldwide)</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-dev"></i></a>
+            </div>
+          </div>
+          <div style="flex:1">
+            <form id="contactForm">
+              <input type="text" placeholder="Nama lengkap" style="width:100%; padding:12px; margin-bottom:12px; background:#11161f; border:1px solid #2d3748; border-radius:12px; color:white;" required>
+              <input type="email" placeholder="Email" style="width:100%; padding:12px; margin-bottom:12px; background:#11161f; border:1px solid #2d3748; border-radius:12px; color:white;" required>
+              <textarea rows="3" placeholder="Pesan / tawaran proyek ..." style="width:100%; padding:12px; background:#11161f; border:1px solid #2d3748; border-radius:12px; color:white;"></textarea>
+              <button type="submit" class="btn-primary" style="margin-top:1rem; width:100%">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>© 2026 Achmad IP — Expert Programmer. Built with <i class="fas fa-heart" style="color:#3b82f6"></i> for innovation & clean code.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Portfolio Data - menunjukkan karya expert (backend, fullstack, AI dll)
+    const portfolioData = [
+      {
+        title: "Sovereign API Gateway",
+        desc: "High-performance gateway dengan rate limiting, auth JWT terdistribusi, dan observability (Prometheus + Grafana). Handle 50k req/detik.",
+        tech: ["Go", "Redis", "Envoy", "K8s"],
+        icon: "fas fa-cloud-upload-alt"
+      },
+      {
+        title: "EduAI Assistant",
+        desc: "Platform tutor AI berbasis LLM fine-tuned untuk bimbingan belajar coding. Real-time chat & code evaluator.",
+        tech: ["Python", "FastAPI", "LangChain", "React"],
+        icon: "fas fa-brain"
+      },
+      {
+        title: "FinCore Banking",
+        desc: "Sistem core transaksi perbankan digital dengan sharding database dan fraud detection realtime.",
+        tech: ["Java", "Spring Boot", "Kafka", "MongoDB"],
+        icon: "fas fa-university"
+      },
+      {
+        title: "Smart Inventory IoT",
+        desc: "Dashboard manajemen gudang dengan IoT integration dan predictive analytics menggunakan time-series DB.",
+        tech: ["Node.js", "InfluxDB", "MQTT", "Vue.js"],
+        icon: "fas fa-microchip"
+      },
+      {
+        title: "MediChain",
+        desc: "Blockchain untuk rekam medis pasien dengan zero-knowledge proof, memenuhi standar keamanan kesehatan.",
+        tech: ["Solidity", "Hyperledger", "TypeScript", "IPFS"],
+        icon: "fas fa-file-medical"
+      },
+      {
+        title: "EcoStream Platform",
+        desc: "Video streaming platform dengan CDN adaptive bitrate dan recommendation engine kolaboratif.",
+        tech: ["Golang", "FFmpeg", "TensorFlow", "AWS S3"],
+        icon: "fas fa-video"
+      }
+    ];
+
+    function loadPortfolio() {
+      const grid = document.getElementById('portfolioGrid');
+      if(!grid) return;
+      grid.innerHTML = '';
+      portfolioData.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'portfolio-card';
+        card.innerHTML = `
+          <div class="card-img">
+            <i class="${project.icon}" style="font-size: 3.2rem;"></i>
+          </div>
+          <div class="card-content">
+            <h3>${project.title}</h3>
+            <p>${project.desc}</p>
+            <div class="tech-stack">
+              ${project.tech.map(t => `<span>${t}</span>`).join('')}
+            </div>
+            <a href="#" class="card-link">Lihat studi kasus <i class="fas fa-arrow-right"></i></a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // smooth scroll and interactivity
+    document.querySelectorAll('.nav-links a, #contactScroll, #exploreWork').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        let targetId = '';
+        if(this.id === 'contactScroll') targetId = '#contact';
+        else if(this.id === 'exploreWork') targetId = '#portfolio';
+        else targetId = this.getAttribute('href');
+        if(targetId && targetId !== '#') {
+          e.preventDefault();
+          const section = document.querySelector(targetId);
+          if(section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Resume button (simulasi download file txt / pdf)
+    const resumeBtn = document.getElementById('resumeBtn');
+    if(resumeBtn) {
+      resumeBtn.addEventListener('click', () => {
+        const resumeContent = `ACHMAD IP - EXPERT PROGRAMMER\n\nPengalaman:\nLead Software Engineer (2022-sekarang) : Arsitek mikroservices skala besar.\nSenior Backend Developer (2019-2022) : Payment gateway, integrasi fintech.\nFullstack (2016-2019) : E-commerce & ML recommendation.\n\nKeahlian Utama: Python, Java, Go, Node.js, Cloud AWS/GCP, K8s, Sistem Terdistribusi.\nPortofolio: API Gateway, AI EduAssistant, FinCore Banking, dll.\nKontak: achmad.ip@programmer.expert`;
+        const blob = new Blob([resumeContent], {type: 'text/plain'});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'AchmadIP_Resume.txt';
+        link.click();
+        URL.revokeObjectURL(link.href);
+      });
+    }
+
+    // Contact form simulation with alert
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Terima kasih! Pesan Anda telah terkirim. Achmad IP akan menghubungi Anda dalam 24 jam.');
+        contactForm.reset();
+      });
+    }
+
+    // tambahkan sedikit animasi hover dan dynamic year di footer (opsional)
+    const yearSpan = document.querySelector('footer p');
+    if(yearSpan) {
+      const currentYear = new Date().getFullYear();
+      if(yearSpan.innerHTML.includes('2026')) {
+        yearSpan.innerHTML = yearSpan.innerHTML.replace('2026', currentYear);
+      }
+    }
+
+    // inisialisasi portfolio
+    loadPortfolio();
+  </script>
+</body>
+</html>
